@@ -9,7 +9,7 @@ int find_nth_prime(int n)
 {
     int count = 0;
     int i, j;
-    int p;
+    int p = -1;
 
     for(i = 0; count < n; ++i) {
         int flag = 0;
