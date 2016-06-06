@@ -1,5 +1,6 @@
 CFLAGS= -Wall -Wextra -Werror -Ofast
 LDFLAGS= -lpthread
+CC=clang
 
 ODIR= obj
 SDIR= src
