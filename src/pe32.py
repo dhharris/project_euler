@@ -9,9 +9,9 @@ def is_pandigital(prod, m, n):
     if '0' in string:
         return False
     for i in string:
-        if digits[int(i)] == 1:
+        if digits[int(i)]:
             return False
-        digits[int(i)] += 1
+        digits[int(i)] = 1
     return min(digits.values()) == 1
 
 for m in range(1, 9999):
