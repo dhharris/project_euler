@@ -8,21 +8,21 @@
 
 int d(int n)
 {
-    int i, sum = 1;
-    for (i = 2; i * i <= n; ++i)
-        sum += n % i ? 0 : (i * i == n ? i : i + n / i);
-    return sum;
+        int i, sum = 1;
+        for (i = 2; i * i <= n; ++i)
+                sum += n % i ? 0 : (i * i == n ? i : i + n / i);
+        return sum;
 }
 
 int main()
 {
-    int sum = 0;
-    int a;
+        int sum = 0;
+        int a;
 
-    for (a = 1; a < 10000; ++a) {
-        int b = d(a);
-        if (a != b && a == d(b))
-            sum += a;
-    }
-    printf("%d\n", sum);
+        for (a = 1; a < 10000; ++a) {
+                int b = d(a);
+                if (a != b && a == d(b))
+                        sum += a;
+        }
+        printf("%d\n", sum);
 }

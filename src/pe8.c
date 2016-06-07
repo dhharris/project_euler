@@ -1,6 +1,6 @@
 /*
- * Find the thirteen adjacent digits in the 1000-digit number that have the greatest product.
- * What is the value of this product?
+ * Find the thirteen adjacent digits in the 1000-digit number that have the
+ * greatest product. What is the value of this product?
  */
 
 #include <stdio.h>
@@ -31,36 +31,36 @@ char big_number[] = "73167176531330624919225119674426574742355349194934"
  */
 int to_digit(char c)
 {
-    return c - '0';
+        return c - '0';
 }
 
 int main()
 {
-    const int digits = 13, length = strlen(big_number);
-    int i;
-    long long product = 1;
+        const int digits = 13, length = strlen(big_number);
+        int i;
+        long long product = 1;
 
-    for (i = 0; i < digits; ++i)
-        product *= to_digit(big_number[i]);
-    int current_digit, product_length = digits;
-    long long largest = product;
+        for (i = 0; i < digits; ++i)
+                product *= to_digit(big_number[i]);
+        int current_digit, product_length = digits;
+        long long largest = product;
 
-    for (; i < length; ++i) {
-        current_digit = to_digit(big_number[i]);
-        if (!current_digit) {
-            product = 1;
-            product_length = 0;
-            continue;
+        for (; i < length; ++i) {
+                current_digit = to_digit(big_number[i]);
+                if (!current_digit) {
+                        product = 1;
+                        product_length = 0;
+                        continue;
+                }
+                if (product_length++ == digits) {
+                        product /= to_digit(big_number[i - digits]);
+                        product_length = digits;
+                }
+                product *= current_digit;
+                if (product > largest)
+                        largest = product;
         }
-        if (product_length++ == digits) {
-            product /= to_digit(big_number[i - digits]);
-            product_length = digits;
-        }
-        product *= current_digit;
-        if (product > largest)
-            largest = product;
-    }
-    printf("%llu\n", largest);
+        printf("%llu\n", largest);
 
-    return 0;
+        return 0;
 }

@@ -5,13 +5,13 @@
 #include <stdio.h>
 int main()
 {
-    int i, count = 0;
+        int i, count = 0;
 
-    for (i = 1; i < 1000; ++i)
-        if (i % 3 == 0 || i % 5 == 0)
-            count += i;
+        for (i = 1; i < 1000; ++i)
+                if (i % 3 == 0 || i % 5 == 0)
+                        count += i;
 
-    printf("%d\n", count);
+        printf("%d\n", count);
 
-    return 0;
+        return 0;
 }
