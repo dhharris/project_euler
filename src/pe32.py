@@ -15,7 +15,7 @@ def is_pandigital(prod, m, n):
     return min(digits.values()) == 1
 
 for m in range(1, 9999):
-    for n in range(1, 9999/m):              # Disclude 5 digit numbers
+    for n in range(1, 9999 / m):            # Disclude 5 digit numbers
         prod = m * n
         if (is_pandigital(prod, m, n)):
             products.add(prod)
