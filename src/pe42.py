@@ -41,15 +41,15 @@ def strsum(s):
 def generate_tri_seq(N, t):
     """Create triangle sequence for i = 1, ..., N"""
     for i in range(1, N + 1):
-        t[i * (i + 1) / 2] = 1
+        t.add(i * (i + 1) / 2)
 
 
 # Read in data
 f = open('../data/p042_words.txt', 'r')
 data = f.read().split(',')
 
-# Create dictionary with triangle numbers as keys
-t = {}
+# Create a set of triangle numbers from n = 1 to 1000
+t = set()
 generate_tri_seq(1000, t)
 
 # Calculate result
