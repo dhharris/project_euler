@@ -1,3 +1,8 @@
+/*
+ * How many, not necessarily distinct, values of nCr, for 1 <= n <= 100, are
+ * greater than one-million?
+ */
+
 #include <stdio.h>
 #include <stdint.h>
 
@@ -6,9 +11,6 @@ uint64_t min(uint64_t a, uint64_t b)
         return (a < b) ? a : b;
 }
 
-/*
- * Returns value of n C k
- */
 uint64_t binomial_coefficient(uint64_t n, uint64_t k)
 {
         uint64_t i, j;
@@ -27,7 +29,6 @@ uint64_t binomial_coefficient(uint64_t n, uint64_t k)
                 }
         }
         return C[n][k];
-
 }
 
 int main()
