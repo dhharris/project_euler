@@ -1,3 +1,5 @@
+# Compiles all C files in the src directory
+
 CFLAGS= -Wall -Wextra -Werror -Ofast
 LDFLAGS= -lpthread
 CC=clang
