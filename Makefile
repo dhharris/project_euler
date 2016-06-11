@@ -16,6 +16,9 @@ OBJS := $(patsubst $(EDIR)/%,$(ODIR)/%,$(_OBJS))
 
 all : $(PRGS)
 
+debug: CFLAGS += -DDEBUG -g
+debug: $(PRGS)
+
 ## Compile the object files
 
 $(ODIR)/%.o : $(SDIR)/%.c
