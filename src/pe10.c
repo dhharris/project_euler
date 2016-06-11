@@ -75,7 +75,7 @@ int main()
                 sum += (uintptr_t)ret;
         }
 
-        printf("%lu\n", sum);
+        printf("%llu\n", sum);
 
 
         return 0;

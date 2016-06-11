@@ -47,7 +47,7 @@ int main()
                 if (is_pandigital(n) && is_prime(n))
                         break;
 
-        printf("%lu\n", n);
+        printf("%llu\n", n);
 
         return 0;
 }

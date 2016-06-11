@@ -19,7 +19,7 @@ int main()
                 b = f;
         }
 
-        printf("%lu\n", sum);
+        printf("%llu\n", sum);
 
         return 0;
 }
