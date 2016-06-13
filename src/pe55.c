@@ -22,7 +22,7 @@ char *strrev(char *str)
 uint64_t numrev(uint64_t n)
 {
         char num[30];
-        sprintf(num, "%llu", n);
+        sprintf(num, "%lu", n);
         strrev(num);
         return strtoull(num, NULL, 10);
 }
@@ -32,7 +32,7 @@ int is_pal(uint64_t n)
         char num[30];
         char numr[30];
 
-        sprintf(num, "%llu", n);
+        sprintf(num, "%lu", n);
         strcpy(numr, num);
         strrev(numr);
         return strcmp(num, numr) == 0;

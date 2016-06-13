@@ -17,7 +17,7 @@ int main()
                 ++divisor;
         }
 
-        printf("%llu\n", divisor);
+        printf("%lu\n", divisor);
 
         return 0;
 }

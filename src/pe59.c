@@ -1,16 +1,23 @@
+/*
+ * Found the key by generating all valid results for all three letter key
+ * combinations, then manually scanning output (../data/pe59_output.txt)
+ * to find the correct key
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include <sys/stat.h>
 
 #define FILENAME "data/p059_cipher.txt"
 
-void xor_encrypt(char *key, char *str, size_t nbytes)
+void xor_encrypt(char *key, int *data, size_t nbytes)
 {
         int i;
         int keylen = strlen(key);
         for (i = 0; i < (int)nbytes; ++i)
-                str[i] = str[i]^key[i % keylen];
+                data[i] = data[i]^(int)key[i % keylen];
 }
 
 /*
@@ -61,15 +68,60 @@ off_t fsize(const char *filename)
         return -1;
 }
 
+/*
+ * Perform a deep copy of the data array
+ */
+int *copy_data(int *data, size_t nbytes)
+{
+        int i;
+        int *cpy = malloc(sizeof(int) * nbytes);
+
+        for (i = 0; i < (int)nbytes; ++i)
+                cpy[i] = data[i];
+
+        return cpy;
+}
+
+/*
+ * Print results
+ *
+ * Do not print any results which yield unprintable characters
+ */
+void print_results(char *key, int *data, size_t nbytes)
+{
+        int i;
+        char *buf = malloc(nbytes);
+        size_t bufsize = 0;
+
+        for (i = 0; i < (int)nbytes; ++i) {
+                if (isprint(data[i]))
+                        buf[bufsize++] = data[i];
+                else {
+                        free(buf);
+                        return;
+                }
+        }
+
+        printf("Result for key %s: ", key);
+
+        for (i = 0; i < (int)bufsize; ++i)
+                putchar(buf[i]);
+        putchar('\n');
+
+        free(buf);
+}
+
 int main()
 {
         FILE *fptr = fopen(FILENAME, "r");
         char *lineptr = NULL;
+        char key[] = "god";
         size_t n = 0;
         size_t nbytes = 0;
         ssize_t c;
         off_t file_size;
-        char *data;
+        int *data;
+        int sum = 0;
         int i;
 
         if ((file_size = fsize(FILENAME)) == -1) {
@@ -77,7 +129,7 @@ int main()
                 return 1;
         }
 
-        data = malloc(file_size + 1);
+        data = malloc(sizeof(int) * file_size);
 
         if (!data) {
                 perror("malloc()");
@@ -87,11 +139,18 @@ int main()
         while ((c = getdelim(&lineptr, &n, ',', fptr) != -1))
                 data[nbytes++] = atoi(lineptr);
 
-        for (i = 0; i < (int)nbytes; ++i)
-                printf("%d\n", data[i]);
-        /* Add null byte to data */
-        data[nbytes] = '\0';
-        printf("%s",data);
+
+        xor_encrypt(key, data, nbytes);
+        for (i = 0; i < (int)nbytes; ++i) {
+                putchar(data[i]);
+                sum += data[i];
+        }
+        putchar('\n');
+        printf("%d\n", sum);
+
+        free(data);
+        free(lineptr);
+        fclose(fptr);
 
         return 0;
 }
