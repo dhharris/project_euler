@@ -16,6 +16,7 @@ OBJS := $(patsubst $(EDIR)/%,$(ODIR)/%,$(_OBJS))
 
 all : $(PRGS)
 
+debug: clean
 debug: CFLAGS += -DDEBUG -g
 debug: $(PRGS)
 
