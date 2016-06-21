@@ -2,10 +2,9 @@
  * How many different ways can one hundred be written as a sum of at least two
  * positive integers?
  */
+#include <stdio.h>
 
 int cache[101][101];
-
-#include <stdio.h>
 
 /*
  * Returns the number of partitions of n using only positive integers
