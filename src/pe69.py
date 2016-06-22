@@ -1,5 +1,8 @@
-# Sieve of Eratosthenes
-# David Eppstein, UC Irvine, 28 Feb 2002
+# Find the value of n <= 1000000 for which n / Phi(n) is a maximum
+#
+# Well, we can simply multiply all primes together until we get a number
+# greater than 1000000 because the function is going to be maximized
+# when n has the most prime factors.
 
 from __future__ import generators
 
@@ -17,31 +20,13 @@ def eratosthenes():
             del D[q]       # no longer need D[q], free memory
         q += 1
 
-def is_prime(n):
-    """Returns True if n is prime."""
-    if n <= 1:
-        return False
-    if n == 2:
-        return True
-    if n % 2 == 0:
-        return False
-
-    i = 3
-
-    while i * i <= n:
-        if n % i == 0:
-            return False
-
-        i += 2
-
-    return True
-
 pgen = eratosthenes()
 product = 1
+
 for i in pgen:
     if (product * i < 1000000):
         product *= i
     else:
         break
-print product
 
+print product
