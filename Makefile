@@ -1,7 +1,7 @@
 # Compiles all C files in the src directory
 
 CFLAGS= -Wall -Wextra -Werror -Ofast
-LDFLAGS= -lpthread
+LDFLAGS= -lpthread -lm
 CC=clang
 
 ODIR= obj
