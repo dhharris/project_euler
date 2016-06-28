@@ -12,7 +12,7 @@ def check(base, exponent):
     return count_digits(base**exponent) == exponent
 
 count = 0
-for i in range(1, 25):
+for i in range(1, 10):
     for n in range(1, 25):
         if check(i, n):
             count += 1
