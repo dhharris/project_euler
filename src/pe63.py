@@ -9,10 +9,7 @@ def count_digits(n):
 
 def check(base, exponent):
     '''We are checking to see if i^n has n digits'''
-    if count_digits(base**exponent) == exponent:
-        return 1
-    return 0
-
+    return count_digits(base**exponent) == exponent
 
 count = 0
 for i in range(1, 25):
