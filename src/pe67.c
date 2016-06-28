@@ -40,6 +40,14 @@ int right_child(int row, int col)
  * Computes the max path sum in the triangle
  * Uses a dynamic programming approach to systematically reduce the size
  * of the triangle.
+ *
+ * In short, I iterate through every column in the second to last row,
+ * then add the largest child of each element to itself.
+ * Here's an illustration of the process for a simple triangle:
+ *
+ * 1                    1               6
+ * 1 2          ->      3 5     ->
+ * 1 2 3
  */
 int max_path(int *triangle, int num_rows)
 {
