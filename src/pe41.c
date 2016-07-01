@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
+#include <inttypes.h>
 
 int is_pandigital(uint64_t n)
 {
@@ -47,7 +48,7 @@ int main()
                 if (is_pandigital(n) && is_prime(n))
                         break;
 
-        printf("%lu\n", n);
+        printf("%" PRIu64 "\n", n);
 
         return 0;
 }

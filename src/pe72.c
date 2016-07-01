@@ -27,6 +27,7 @@
 
 #include <stdio.h>
 #include <stdint.h>
+#include <inttypes.h>
 
 uint64_t phi(uint64_t n)
 {
@@ -52,7 +53,7 @@ int main()
         for (i = 2; i <= 1000000; ++i)
                 sum += phi(i);
 
-        printf("%lu\n", sum);
+        printf("%" PRIu64 "\n", sum);
 
         return 0;
 }

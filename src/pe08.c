@@ -5,6 +5,8 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdint.h>
+#include <inttypes.h>
 
 char big_number[] = "73167176531330624919225119674426574742355349194934"
                     "96983520312774506326239578318016984801869478851843"
@@ -38,12 +40,12 @@ int main()
 {
         const int digits = 13, length = strlen(big_number);
         int i;
-        long long product = 1;
+        uint64_t product = 1;
 
         for (i = 0; i < digits; ++i)
                 product *= to_digit(big_number[i]);
         int current_digit, product_length = digits;
-        long long largest = product;
+        uint64_t largest = product;
 
         for (; i < length; ++i) {
                 current_digit = to_digit(big_number[i]);
@@ -60,7 +62,7 @@ int main()
                 if (product > largest)
                         largest = product;
         }
-        printf("%llu\n", largest);
+        printf("%" PRIu64 "\n", largest);
 
         return 0;
 }

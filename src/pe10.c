@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
+#include <inttypes.h>
 #include <math.h>
 #include <pthread.h>
 
@@ -75,7 +76,7 @@ int main()
                 sum += (uintptr_t)ret;
         }
 
-        printf("%lu\n", sum);
+        printf("%" PRIu64 "\n", sum);
 
 
         return 0;

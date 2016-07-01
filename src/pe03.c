@@ -3,6 +3,7 @@
  */
 #include <stdio.h>
 #include <stdint.h>
+#include <inttypes.h>
 
 int main()
 {
@@ -17,7 +18,7 @@ int main()
                 ++divisor;
         }
 
-        printf("%lu\n", divisor);
+        printf("%" PRIu64 "\n", divisor);
 
         return 0;
 }

@@ -5,6 +5,7 @@
  */
 #include <stdio.h>
 #include <stdint.h>
+#include <inttypes.h>
 
 int main()
 {
@@ -19,7 +20,7 @@ int main()
                 b = f;
         }
 
-        printf("%lu\n", sum);
+        printf("%" PRIu64 "\n", sum);
 
         return 0;
 }
