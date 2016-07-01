@@ -13,31 +13,37 @@
 
 int min(int a, int b)
 {
+        /* -1 is an error value and allows us to detect out of bounds */
         if (b == -1 && a == -1)
                 return 0;
         if (a == -1)
                 return b;
-        else if (b == -1)
+        if (b == -1)
                 return a;
         return (a < b) ? a : b;
 }
 
+int valid_index(int row, int col)
+{
+        return row >= 0 && col >= 0 && row < NUM_ROWS && col < NUM_COLS;
+}
+
 int gindex(int row, int col)
 {
-        assert(row >= 0 && col >= 0 && row < NUM_ROWS && col < NUM_COLS);
+        assert(valid_index(row, col));
         return row * NUM_COLS + col;
 }
 
 int right_cell(int *grid, int row, int col)
 {
-        if (col + 1 >= NUM_COLS || col < 0 || row >= NUM_ROWS || col < 0)
+        if (!valid_index(row, col + 1))
                 return -1;
         return grid[gindex(row, col + 1)];
 }
 
 int lower_cell(int *grid, int row, int col)
 {
-        if (row + 1 >= NUM_ROWS || row < 0 ||col >= NUM_COLS|| col < 0)
+        if (!valid_index(row + 1, col))
                 return -1;
         return grid[gindex(row + 1, col)];
 }
