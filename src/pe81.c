@@ -51,15 +51,12 @@ int lower_cell(int *grid, int row, int col)
 int min_path(int *grid)
 {
         int row, col;
-        row = NUM_ROWS - 1;
 
-        while (row >= 0) {
+        for (row = NUM_ROWS - 1; row >= 0; --row) {
                 for (col = NUM_COLS - 1; col >= 0; --col)
                         grid[gindex(row, col)] +=
                                 min(right_cell(grid, row, col),
                                 lower_cell(grid, row, col));
-
-                --row;
         }
         return grid[0];
 }
