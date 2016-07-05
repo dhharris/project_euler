@@ -70,10 +70,13 @@ int main()
                                 if (s < MAX)
                                         triples[s] = 1;
                         }
+
         for (i = 0; i < MAX; ++i)
                 count += triples[i];
 
         printf("%d\n", count);
         free(primes);
         free(triples);
+
+        return 0;
 }
