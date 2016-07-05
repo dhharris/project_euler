@@ -27,7 +27,7 @@ int is_prime(int n)
 
 /*
  * Given an array of length n, caches the results of is_prime
- * for i = 0, ..., n - 1
+ * for i = 0, ..., len - 1
  */
 void generate_parray(int *parray, int len)
 {
