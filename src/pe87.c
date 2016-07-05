@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define NPRIMES 7100
+#define NPRIMES 7072
 #define MAX 50000000
 
 int is_prime(int n)
@@ -46,7 +46,7 @@ int sum(int a, int b, int c)
 
 int main()
 {
-        int *primes = calloc(NPRIMES, sizeof(int));
+        int *primes = malloc(sizeof(int) * NPRIMES);
         int *triples = calloc(MAX, sizeof(int));
         int a, b, c;
         int i;
