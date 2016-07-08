@@ -13,7 +13,6 @@
 from __future__ import generators
 import collections
 import itertools
-from itertools import izip
 
 def eratosthenes():
     '''Yields the sequence of prime numbers via the Sieve of Eratosthenes.'''
@@ -38,7 +37,7 @@ def findsubsets(L, m):
 
 def is_arithmetic(seq):
     '''Test if seq is an arithmetic sequence'''
-    gen = (i - j for i, j in izip(seq[:-1], seq[1:]))
+    gen = (i - j for i, j in itertools.izip(seq[:-1], seq[1:]))
     diff = next(gen, None)  # get the first element in the generator
     return all(d == diff for d in gen) # check all the others are equal to it
 
