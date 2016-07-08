@@ -43,7 +43,8 @@ def is_arithmetic(seq):
 
 primes = eratosthenes()
 
-# Chains of each prime permutation, represented by a list.
+# Maps sorted digits to chains of each prime permutation, represented by a
+# list.
 permutations = collections.defaultdict(list)
 
 
