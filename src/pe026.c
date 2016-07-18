@@ -3,14 +3,17 @@
  * cycle in its decimal fraction part.
  */
 #include <stdio.h>
-#include <stdint.h>
+#include <stdlib.h>
 
 /*
  * Performs long division for the expression n / d while counting number of
  * iterations until either the remainder is zero or we are back with the
  * expression we started with.
  *
- * Returns the number of iterations performed.
+ * Every time we need to 'carry a zero', i.e. multiply by ten, we increment
+ * count.
+ *
+ * Returns the period of the repeating decimal for n / d.
  */
 int ldivide(int n, int d)
 {
@@ -18,38 +21,57 @@ int ldivide(int n, int d)
         int count = 0;
 
         while (1) {
-                while (n / d == 0)
+                while (n / d == 0) {
                         n *= 10;
+                        ++count;
+                }
 
                 n %= d;
-                ++count;
+
 
                 if (n == 0)
                         return 0;
-                if (n == first || n == 10 || n == 100 || n == 1000)
+                if (n == first)
                         return count;
+
         }
+}
+
+int is_prime(int n)
+{
+        if (n == 2)
+                return 1;
+        if (n % 2 == 0)
+                return 0;
+
+        int k;
+
+        for (k = 3; k * k <= n; ++k)
+                if (n % k == 0)
+                        return 0;
+        return 1;
 }
 
 int main()
 {
-        int d;
-        int max, maxd;
-
+        int i, d, max;
         max = 0;
-        maxd = 0;
 
-        printf("%d\n", ldivide(1, 443));
+        for (i = 2; i < 1000; ++i) {
+                /* Iterate over only primes since composite numbers have the
+                 * same period length as their prime factors
+                 */
+                if (!is_prime(i))
+                        continue;
 
-        for (d = 2; d < 1000; ++d) {
-                int len = ldivide(1, d);
-                if (len > max) {
-                        max = len;
-                        maxd = d;
+                int period = ldivide(1, i);
+                if (period > max) {
+                        max = period;
+                        d = i;
                 }
         }
 
-        printf("%d\n", maxd);
+        printf("%d\n", d);
 
         return 0;
 }
